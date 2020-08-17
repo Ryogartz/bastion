@@ -1,0 +1,70 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="naranja">
+    <ion-buttons slot="start">
+      <ion-icon name="close-outline" (click)="salir()"></ion-icon>
+    </ion-buttons>
+    <ion-title class="ion-text-center" mode="ios" style="font-size: 21px;">Información</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item lines="none">
+      <ion-thumbnail slot="start" 
+      style="margin-right: 0.5rem;
+      height: 44px;
+      width: 44px;
+      border-radius: 20px;
+      padding: 6px;
+      /* box-sizing: content-box; */
+      box-shadow: 0px -1px 15px rgba(0,0,0,0.32);
+      margin-bottom: 1rem;">
+        <img src="assets/img/logo-1.png">
+      </ion-thumbnail>
+      <ion-label>
+        <h3 style="font-size: 20px; font-weight: 400;">Bunny Food</h3>
+            <span class="head-star" slot="start">
+              <ion-icon src="assets/img/icon/estrella.svg" class="icono-start"></ion-icon>
+              <ion-icon src="assets/img/icon/estrella.svg" class="icono-start"></ion-icon>
+              <ion-icon src="assets/img/icon/estrella.svg" class="icono-start"></ion-icon>
+              <ion-icon src="assets/img/icon/estrella.svg" class="icono-start"></ion-icon>
+              <ion-icon src="assets/img/icon/estrella.svg" class="icono-start"></ion-icon>
+            </span>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div class="contenedor">
+
+      <p style="color:#C0C0C0;">
+        <ion-icon src="assets/img/icon/ubicacion1.svg" class="icono"></ion-icon>
+        Barrio los colores - Medellín
+      </p>
+      <p style="color:#C0C0C0;">
+        <ion-icon src="assets/img/icon/reloj.svg" class="icono"></ion-icon>
+        Lun - Vier de 06:00 pm - 12:00am
+      </p>
+
+  </div>
+
+
+
+</ion-content>
+<ion-footer class="ion-no-border">
+  <div style="display: flex;">
+    <ion-button style="margin: 0 auto; height: 60px; color: #fff; 
+    --border-radius: 24px 0px 0px 24px; font-size: 23px;    
+     width: 49%;
+    --background: #FF5A31;" 
+    expand="block" shape="round" class="finalUser second" mode='ios'>
+    ¿Cómo llegar?
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-button>
+    <ion-button style="margin: 0 auto; height: 60px; color: #fff; 
+     --border-radius: 0px 25px 25px 0px; font-size: 23px; flex: 50%;" 
+    expand="block" shape="round" class="finalUser second" mode='ios'>
+       <span>Contacto</span> 
+      <ion-icon src="assets/img/icon/contactenos.svg" class="icono-start"></ion-icon>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-button>
+  </div>
+</ion-footer>

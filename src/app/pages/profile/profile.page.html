@@ -1,0 +1,51 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="new-background-color">
+    <div class="ajustar">
+        <div>
+          <ion-buttons slot="start" class="color">
+            <ion-back-button defaultHref="/" style="color: #fff;"></ion-back-button>
+          </ion-buttons>
+        </div>
+        <div>
+          <ion-title>Editar perfil</ion-title>
+        </div>
+        <div style=" font-size: 1.7rem;margin-right: 1rem;">
+          <ion-buttons slot="start" class="color">
+            <ion-icon name="checkmark-outline"></ion-icon>          
+          </ion-buttons>
+        </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contenedor">
+    <div class="contenedor-logo">
+      <ion-avatar>
+        <img [src]="image" onerror="this.src='https://images-na.ssl-images-amazon.com/images/I/51e6kpkyuIL._AC_SY355_.jpg'">
+        <ion-fab-button size="small">
+          <ion-icon name="camera"></ion-icon>
+        </ion-fab-button>
+      </ion-avatar>
+      <p>Cambia tu foto de perfil</p>
+    </div>
+    <div class="contenedor-form">
+      <ion-list lines="full" class="ion-no-margin ion-no-padding">
+        <ion-item>
+          <ion-label position="stacked">Usuario<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input  type="text" mode="ios" placeholder="Ingresa un nombre de usuario *"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Contraseña <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input  type="password" mode="ios" placeholder="Ingresa una contraseña *"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label position="stacked">Repetir contraseña</ion-label>
+          <ion-input type="text" mode="ios" placeholder="Repite la contraseña *"></ion-input>
+        </ion-item>
+      </ion-list> 
+    </div>
+  </div>  
+</ion-content>

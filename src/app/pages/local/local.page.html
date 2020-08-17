@@ -1,0 +1,176 @@
+
+
+<ion-content>
+  <div class="container-head">
+    <div style="display: flex ; align-items: center;">
+      <div (click)="atras()" style="margin-left: 1rem;">
+        <ion-icon  style="color: #fff; font-size: 24px;"  name="arrow-back-outline"></ion-icon>
+      </div>
+  
+      <div class="form-input">
+        <ion-input type="text" placeholder="Buscar en Recomiendo...">
+          <ion-icon src="assets/img/icon/busqueda.svg" class="icono"></ion-icon>
+        </ion-input>
+      </div>
+    </div>
+    
+  </div>
+  <div class="container-head-information">
+    <img src="assets/img/logobunny.png" alt="logo" class="avatar">
+    <div class="head-title">
+      <h1>Bunny Food</h1>
+      <p (click)="modallocal()">Mas información <span style="color:#FF5A31; margin-left: 7px;"> <b> >   </b> </span> </p>
+    </div>
+
+    <span class="head-star">
+      <ion-icon src="assets/img/icon/estrella.svg" class="icono-start"></ion-icon>
+      <ion-icon src="assets/img/icon/estrella.svg" class="icono-start"></ion-icon>
+      <ion-icon src="assets/img/icon/estrella.svg" class="icono-start"></ion-icon>
+      <ion-icon src="assets/img/icon/estrella.svg" class="icono-start"></ion-icon>
+      <ion-icon src="assets/img/icon/estrella.svg" class="icono-start"></ion-icon>
+    </span>
+
+    <div class="menu-divider">
+      <p>
+        <ion-icon src="assets/img/icon/escoger.svg"></ion-icon>
+        Menú
+      </p>
+    </div>
+  </div>
+  <div class="espaciado">
+    <div class="conocerte">
+      <div class="conocerte-box">
+        <p class="conocerte-box-subtitulo">Hamburguesas</p>
+        <span class="conocerte-box-imagen">
+          <p style="font-size: 0.9375rem; color: #FF8800;">Ver todos</p>
+        </span>
+      </div>
+    </div>
+    <div class="carrousel1">
+      <ion-slides [options]="slideOpts" #slide>
+        <ion-slide>
+          <div>
+            <div style="overflow: hidden; position: relative;">
+              <div class="slide-precio">
+                <p>15.000 $</p>
+              </div>
+              <div class="slide-titulo">
+                <p>hamburguesa ranchera</p>
+              </div>
+              <img src="assets/img/food1.png"/>
+            </div>
+            <ion-button class="btn-food">Agregar</ion-button>
+          </div>
+  
+        </ion-slide>
+  
+        <ion-slide>
+          <div>
+            <div style="overflow: hidden; position: relative;">
+              <div class="slide-precio">
+                <p>15.000 $</p>
+              </div>
+              <div class="slide-titulo">
+                <p>hamburguesa vegana</p>
+              </div>
+              <img src="assets/img/food1.png"/>
+            </div>
+            <ion-button class="btn-food">Agregar</ion-button>
+          </div>
+  
+        </ion-slide>
+  
+        <ion-slide>
+          <div>
+            <div style="overflow: hidden; position: relative;">
+              <div class="slide-precio">
+                <p>15.000 $</p>
+              </div>
+              <div class="slide-titulo">
+                <p>hamburguesa carne</p>
+              </div>
+              <img src="assets/img/food1.png"/>
+            </div>
+            <ion-button class="btn-food">Agregar</ion-button>
+          </div>
+  
+        </ion-slide>
+        
+      </ion-slides>
+    </div>
+  </div>
+  <div style="margin-bottom: 1rem;">
+    <div class="conocerte">
+      <div class="conocerte-box">
+        <p class="conocerte-box-subtitulo">Perros Calientes</p>
+        <span class="conocerte-box-imagen">
+          <p style="font-size: 0.9375rem; color: #FF8800;">Ver todos</p>
+        </span>
+      </div>
+    </div>
+    <div class="carrousel1">
+      <ion-slides [options]="slideOpts" #slide>
+        <ion-slide>
+          <div>
+            <div style="overflow: hidden; position: relative;">
+              <div class="slide-precio">
+                <p>15.000 $</p>
+              </div>
+              <div class="slide-titulo">
+                <p>hamburguesa ranchera</p>
+              </div>
+              <img src="assets/img/food1.png"/>
+            </div>
+            <ion-button class="btn-food">Agregar</ion-button>
+          </div>
+  
+        </ion-slide>
+  
+        <ion-slide>
+          <div>
+            <div style="overflow: hidden; position: relative;">
+              <div class="slide-precio">
+                <p>15.000 $</p>
+              </div>
+              <div class="slide-titulo">
+                <p>hamburguesa vegana</p>
+              </div>
+              <img src="assets/img/food1.png"/>
+            </div>
+            <ion-button class="btn-food">Agregar</ion-button>
+          </div>
+  
+        </ion-slide>
+  
+        <ion-slide>
+          <div>
+            <div style="overflow: hidden; position: relative;">
+              <div class="slide-precio">
+                <p>15.000 $</p>
+              </div>
+              <div class="slide-titulo">
+                <p>hamburguesa carne</p>
+              </div>
+              <img src="assets/img/food1.png"/>
+            </div>
+            <ion-button class="btn-food">Agregar</ion-button>
+          </div>
+  
+        </ion-slide>
+        
+      </ion-slides>
+    </div>
+  </div>
+  <div class="container-footer">
+    <div class="container-footer-body">
+        <div class="contenedor-valor"> 
+           <p style="margin: 0"> 1 </p>
+        </div>
+        <div>               
+            <ion-button class="btn-food" (click)="modal()">Ver pedido</ion-button>
+        </div>
+        <div> <p style="margin-right: 1rem; color: #FF5A31;">$15.000</p></div>
+    </div>
+  </div>
+
+</ion-content>
