@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ModalPedidoPageRoutingModule } from './modal-pedido-routing.module';
+import { RedPageRoutingModule } from './red-routing.module';
 
-import { ModalPedidoPage } from './modal-pedido.page';
+import { RedPage } from './red.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ModalPedidoPageRoutingModule
+    RedPageRoutingModule
   ],
-  declarations: [ModalPedidoPage]
+  declarations: [RedPage]
 })
-export class ModalPedidoPageModule {}
+export class RedPageModule {}

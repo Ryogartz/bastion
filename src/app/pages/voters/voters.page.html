@@ -1,17 +1,23 @@
 
-<ion-header class="ion-no-border">
-  <ion-toolbar class="fondo-cabeza">
-    <ion-buttons slot="start" style="margin-left: 1rem;">
-      <ion-icon class="icon-header"class="icon-header" name="reorder-three-outline"></ion-icon>   
-     </ion-buttons>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" ios="chevron-down" md="chevron-down"></ion-icon>
+      </ion-button>
+    </ion-buttons>
 
-     <ion-buttons slot="end" style="margin-right: 1rem;">
-      <ion-icon class="icon-header2" name="notifications"></ion-icon>
-      Jhon Doe
-     </ion-buttons>
+    <ion-title class="ion-text-end">
+      <div class="btn-notification">
+        <ion-badge color="primary" >66</ion-badge>
+        <ion-icon name="notifications">
+        </ion-icon>
+      </div>
+      Mauricio Rojas</ion-title>
   </ion-toolbar>
-
-
 </ion-header>
 
 <ion-content class="fondo-cuerpo">
@@ -71,7 +77,7 @@
     </ion-input>
 
     <ion-label style="font-size: 15px;" >Subir foto de perfil</ion-label>
-    <img style="width: 318px; height: 160px;"  src="assets/img/upload.jpg" alt="Ionic Logo">
+    <img src="https://via.placeholder.com/600" alt="Ionic Logo">
 
     <ion-item>
       <ion-label position="floating" style="font-size: 15px;" >Dirección</ion-label>
@@ -82,6 +88,7 @@
 
     <ion-label style="font-size: 15px;" >Selecciona en el mapa una ubicación</ion-label>
 
+    <img src="https://via.placeholder.com/600" alt="Ionic Logo">
 
   </div>
 
