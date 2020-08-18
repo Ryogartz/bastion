@@ -107,6 +107,10 @@ const routes: Routes = [
   {
     path: 'red',
     loadChildren: () => import('./pages/red/red.module').then( m => m.RedPageModule)
+  },
+  {
+    path: 'pages-modal-edit',
+    loadChildren: () => import('./pages-modal-edit/pages-modal-edit.module').then( m => m.PagesModalEditPageModule)
   }
 
 
