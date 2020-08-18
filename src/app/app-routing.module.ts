@@ -103,6 +103,10 @@ const routes: Routes = [
   },  {
     path: 'my-red2',
     loadChildren: () => import('./pages/my-red2/my-red2.module').then( m => m.MyRed2PageModule)
+  },
+  {
+    path: 'voters',
+    loadChildren: () => import('./pages/voters/voters.module').then( m => m.VotersPageModule)
   }
 
 
