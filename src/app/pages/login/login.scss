@@ -27,3 +27,7 @@
     justify-content: center;
     flex-direction: column;
 }
+
+ion-content{
+  --background: transparent url('./../../../assets/img/fondo-login.svg') 0% 105% no-repeat padding-box;
+}
