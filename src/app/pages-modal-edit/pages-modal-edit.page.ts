@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pages-modal-edit',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pages-modal-edit.page.scss'],
 })
 export class PagesModalEditPage implements OnInit {
-
-  constructor() { }
+  @Input() firstName: string;
+  @Input() lastName: string;
+  @Input() middleInitial: string;
+  constructor(public modalCtrl: ModalController) { }
 
   ngOnInit() {
+  }
+  dismiss() {
+    // using the injected ModalController this page
+    // can "dismiss" itself and optionally pass back data
+    this.modalCtrl.dismiss({
+      'dismissed': true
+    });
   }
 
 }
