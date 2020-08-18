@@ -12,7 +12,7 @@
       border: solid 1px;
     }
   }
-
+  
 
 .icon-header{
     font-size: 3rem;
@@ -34,14 +34,26 @@
 
 .title{
     font-size: 28px;
-    margin-left: 1.1rem;
+    text-align: center;
 }
 
-.title-sencondary{
-    font-size: 18px;
-    margin-left: 1.1rem;
-    font-weight: bold;
-    margin-bottom: .2rem;
+.sub-title{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    p{
+        margin: 0;
+        font-size: 18px;
+    }
+
+    p:first-child{
+        color: #0067BF;
+    }
+
+    p:last-child{
+        text-decoration: underline;
+    }
+
 }
 
 .item-left{
@@ -56,6 +68,7 @@
     flex-direction: column;
     align-items: center;
     color: #fff;
+    margin-left: .5rem;
 }
 
 .detalles-btn2{
@@ -66,12 +79,10 @@
 }
 
 .text-custom{
-    border: 1px solid #d3d3d3;
-    border-radius: 9px;
-    margin-right: 1rem;
     background: #FFFF;
-    width: 50%;
-    margin-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
 }
 
 .container-btn{

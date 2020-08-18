@@ -9,10 +9,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'account',
-    loadChildren: () => import('./pages/account/account.module').then(m => m.AccountModule)
-  },
-  {
     path: 'support',
     loadChildren: () => import('./pages/support/support.module').then(m => m.SupportModule)
   },
@@ -29,26 +25,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/tabs-page/tabs-page.module').then(m => m.TabsModule)
   },
   {
-    path: 'tutorial',
-    loadChildren: () => import('./pages/tutorial/tutorial.module').then(m => m.TutorialModule),
-    // canLoad: [CheckTutorial]
-  },
-  {
-    path: 'rol',
-    loadChildren: () => import('./pages/rol/rol.module').then( m => m.RolPageModule)
-  },
-  {
     path: 'auth',
     loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthPageModule)
   },
-  {
-    path: 'congratulations',
-    loadChildren: () => import('./pages/congratulations/congratulations.module').then( m => m.CongratulationsPageModule)
-  },
-  {
-    path: 'invitations',
-    loadChildren: () => import('./pages/invitations/invitations.module').then( m => m.InvitationsPageModule)
-  },
+
   {
     path: 'dashboard',
     loadChildren: () => import('./pages/dasboard/dasboard.module').then( m => m.DasboardPageModule)
@@ -57,10 +37,7 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
-  {
-    path: 'local',
-    loadChildren: () => import('./pages/local/local.module').then( m => m.LocalPageModule)
-  },
+
   {
     path: 'products',
     loadChildren: () => import('./pages/products/products.module').then( m => m.ProductsPageModule)
@@ -81,14 +58,7 @@ const routes: Routes = [
     path: 'modal-productdetails',
     loadChildren: () => import('./pages/modal-productdetails/modal-productdetails.module').then( m => m.ModalProductdetailsPageModule)
   },
-  {
-    path: 'modal-localinfo',
-    loadChildren: () => import('./pages/modal-localinfo/modal-localinfo.module').then( m => m.ModalLocalinfoPageModule)
-  },
-  {
-    path: 'my-red',
-    loadChildren: () => import('./pages/my-red/my-red.module').then( m => m.MyRedPageModule)
-  },
+
   // {
   //   path: 'modal-productdetails',
   //   loadChildren: () => import('./pages/modal-productdetails/modal-productdetails.module').then( m => m.ModalProductdetailsPageModule)
@@ -97,12 +67,10 @@ const routes: Routes = [
   //   path: 'modal-localinfo',
   //   loadChildren: () => import('./pages/modal-localinfo/modal-localinfo.module').then( m => m.ModalLocalinfoPageModule)
   // },
+
   {
-    path: 'recomendados',
-    loadChildren: () => import('./recomendados/recomendados.module').then( m => m.RecomendadosPageModule)
-  },  {
-    path: 'my-red2',
-    loadChildren: () => import('./pages/my-red2/my-red2.module').then( m => m.MyRed2PageModule)
+    path: 'voters',
+    loadChildren: () => import('./pages/voters/voters.module').then( m => m.VotersPageModule)
   },
   {
     path: 'red',
@@ -112,19 +80,7 @@ const routes: Routes = [
     path: 'pages-modal-edit',
     loadChildren: () => import('./pages-modal-edit/pages-modal-edit.module').then( m => m.PagesModalEditPageModule)
   }
-
-
-
-
-  // {
-  //   path: 'modal-pedido',
-  //   loadChildren: () => import('./pages/modal-pedido/modal-pedido.module').then( m => m.ModalPedidoPageModule)
-  // }
-
-
-
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
