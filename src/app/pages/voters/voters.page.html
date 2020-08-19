@@ -104,10 +104,21 @@
 
 <ion-footer class="ion-no-border">
   <div style="margin-bottom: 1rem;">
-    <ion-button style=" --border-radius: 10px;
-     margin: 0 auto; height: 50px; padding: 0px 20px;" 
-    expand="block" [disabled]='formGroup.status != "VALID"' (click)="add()">Guardar
-      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
-    </ion-button>
+    <ng-container *ngIf="data">
+      <ion-button style=" --border-radius: 10px;
+      margin: 0 auto; height: 50px; padding: 0px 20px;" 
+     expand="block" [disabled]='formGroup.status != "VALID"' (click)="edit()">Guardar
+       <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+     </ion-button>
+    </ng-container>
+    <ng-container *ngIf="!data">
+      <ion-button style=" --border-radius: 10px;
+      margin: 0 auto; height: 50px; padding: 0px 20px;" 
+     expand="block" [disabled]='formGroup.status != "VALID"' (click)="add()">Guardar
+       <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+     </ion-button>
+    </ng-container>
+    
+   
   </div>
 </ion-footer>

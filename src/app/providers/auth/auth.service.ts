@@ -95,9 +95,9 @@ export class AuthService {
     })
   }
 
-  public editUser(data) {
+  public editUser(form) {
     return new Promise((resolve, reject) => {
-      let observer:Observable<any> = this.api.post('api/auth/user', data, true);
+      let observer:Observable<any> = this.api.post('api/auth/refered/update-refered', form, true);
       observer.subscribe((res: any) => {
         resolve(res);
         console.log(res);

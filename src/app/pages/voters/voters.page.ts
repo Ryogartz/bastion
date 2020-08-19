@@ -36,6 +36,7 @@ export class VotersPage implements OnInit {
                   this.data = JSON.parse(data['data']);
                   if(this.data){
                     this.formGroup = this.fb.group({
+                      id:[this.data.id],
                       email: [this.data.email, Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')])],
                       name: [this.data.name, Validators.compose([Validators.required])],
                       lastname: [this.data.lastname, Validators.compose([Validators.required])],
@@ -178,6 +179,17 @@ export class VotersPage implements OnInit {
     // Iniciamos la consulta
     await this.auth.addrefere(this.formGroup.value).then( (res)=>{
       this.utilities.displayToast('Votante registrado exitosamente')
+      this.navCtrl.pop();
+    },(err)=>{
+      //En caso de error
+      this.utilities.displayToastButtonTime(err.error.message ? err.error.message : CONSTANTES.MESSAGES.error);
+      console.log("getError", err );
+    })
+  }
+  async edit(){
+    // Iniciamos la consulta
+    await this.auth.editUser(this.formGroup.value).then( (res)=>{
+      this.utilities.displayToast('Votante modificado exitosamente')
       this.navCtrl.pop();
     },(err)=>{
       //En caso de error
