@@ -111,9 +111,9 @@ export class SignupPage {
 }
 
 async Email(){
+  console.log("data enviada" , this.formGroup.controls.email.value)
   const valido = await this.auth.searchEmail(this.formGroup.controls.email.value)
   if(valido){
-    console.log("aprobado email")
     return false
   }else{
     return true
