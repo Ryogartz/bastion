@@ -43,20 +43,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/products/products.module').then( m => m.ProductsPageModule)
   },
   {
-    path: 'modal-search',
-    loadChildren: () => import('./pages/modal-search/modal-search.module').then( m => m.ModalSearchPageModule)
-  },
-  {
     path: 'modal-recoverpassword',
     loadChildren: () => import('./pages/modal-recoverpassword/modal-recoverpassword.module').then( m => m.ModalRecoverpasswordPageModule)
   },
   {
     path: 'modal-recommended',
     loadChildren: () => import('./pages/modal-recommended/modal-recommended.module').then( m => m.ModalRecommendedPageModule)
-  },
-  {
-    path: 'modal-productdetails',
-    loadChildren: () => import('./pages/modal-productdetails/modal-productdetails.module').then( m => m.ModalProductdetailsPageModule)
   },
 
   // {

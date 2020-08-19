@@ -20,7 +20,7 @@
             <form [formGroup]="formGroup">
               <ion-list>
               <ion-item [ngClass]="{'errorInput': errorControl.email.errors?.pattern}">
-                  <ion-label position="floating" style="font-size: 15px;"  >Usuario *</ion-label>
+                  <ion-label position="floating" style="font-size: 15px;"  >Email *</ion-label>
                   <ion-input  
                   [ngClass]="{
                   'disminuirTamano': this.formGroup.controls.email.value.length === 0 , 
@@ -31,7 +31,7 @@
                 </ion-item>
                 
                 <ion-text color="danger" [hidden]='!errorControl.email.errors?.pattern'>
-                  <p style="margin: 0; font-size: 14px; color: #FFBB00;"  class="ion-padding-start">
+                  <p style="margin: 0; font-size: 14px; color: #007CE6;"  class="ion-padding-start">
                     Ingrese un correo Valido
                   </p>
                 </ion-text>
@@ -49,7 +49,7 @@
                 </ion-item>
                 
                 <ion-text color="danger" [hidden]='!errorControl.password.errors?.minlength'>
-                  <p style="margin: 0; font-size: 14px; color: #FFBB00;" class="ion-padding-start">
+                  <p style="margin: 0; font-size: 14px; color: #007CE6;" class="ion-padding-start">
                     Contraseña debe contener mínimo 6 caracteres
                   </p>
                 </ion-text>

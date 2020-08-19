@@ -27,7 +27,6 @@ export class SignupPage {
   ) {
     this.formGroup = this.fb.group({
       name: ['', Validators.required],
-      sponsor:[0],
       // email:['refm.130995@gmail.com'],
       email: ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
@@ -42,6 +41,15 @@ export class SignupPage {
     await this.utilities.displayLoading();
     let data = this.formGroup.value;
     try {
+      
+      // consultamos si el email existe
+       const email = await this.Email()
+        if(email){
+          this.utilities.dismissLoading();
+          this.presentAlert()
+          return
+        }
+  
       // Iniciamos la consulta
       this.service.signUp(data).then((res: any) => {
         this.utilities.dismissLoading();
@@ -69,7 +77,7 @@ export class SignupPage {
     async getUser(){
       // Iniciamos la consulta
       await this.auth.getUser().then( ()=>{
-        this.navCtrl.navigateRoot('/tutorial');
+        this.navCtrl.navigateRoot('/app/tabs/dashboard');
       },(err)=>{
         //En caso de error
         this.utilities.displayToastButtonTime(err.error.message ? err.error.message : CONSTANTES.MESSAGES.error);
@@ -102,7 +110,26 @@ export class SignupPage {
     }
 }
 
+async Email(){
+  const valido = await this.auth.searchEmail(this.formGroup.controls.email.value)
+  if(valido){
+    console.log("aprobado email")
+    return false
+  }else{
+    return true
+  }
 
+}
+
+
+async presentAlert() {
+  const alert = await this.alertController.create({
+    message: 'el correo ya existe en nuestra base de datos.',
+    buttons: ['OK']
+  });
+
+  await alert.present();
+}
 
 
 }

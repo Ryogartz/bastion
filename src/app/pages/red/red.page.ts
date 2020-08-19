@@ -8,10 +8,12 @@ import { PagesModalEditPage } from '../../pages-modal-edit/pages-modal-edit.page
   styleUrls: ['./red.page.scss'],
 })
 export class RedPage implements OnInit {
+  user:any = [];
 
   constructor(public modalController: ModalController) { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
   async presentModal() {

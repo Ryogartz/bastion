@@ -11,7 +11,7 @@
              </ion-buttons>
           </ion-toolbar>
           <div class="signup-logo">
-            <img src="assets/img/ucono-blanco.png" alt="Ionic Logo">
+            <img src="assets/img/logo-azul.png" alt="Ionic Logo">
             <p style="font-size: 18px;">
               Registrate
             </p>
@@ -19,19 +19,19 @@
           <form [formGroup]="formGroup">
             <ion-list lines="none">
               <ion-item [ngClass]="{'errorInput': errorControl.name.errors?.required && !errorControl.name.pristine}">
-                <ion-label position="stacked" style="font-size: 18px;">Usuario *</ion-label>
+                <ion-label position="stacked" style="font-size: 18px;">Nombre *</ion-label>
                 <ion-input
                 [ngClass]="{
                   'disminuirTamano': this.formGroup.controls.name.value.length === 0 , 
                   'aumentarTamano': this.formGroup.controls.name.value.length !== 0  }"
                  formControlName="name" 
-                 placeholder="Ingresa un nombre de usuario *" 
+                 placeholder="Ingresa un nombre *" 
                  inputmode="text" type="text">
                 </ion-input>
               </ion-item>
               <ion-text color="danger">
-                <p style="margin: 0; font-size: 14px; color: #FFBB00;" *ngIf="errorControl.name.errors?.required && !errorControl.name.pristine" class="ion-padding-start">
-                  Usuario es requerido
+                <p style="margin: 0; font-size: 14px; color: #2699FB;" *ngIf="errorControl.name.errors?.required && !errorControl.name.pristine" class="ion-padding-start">
+                  nombre es requerido
                 </p>
               </ion-text>
         
@@ -47,7 +47,7 @@
                 </ion-input>
               </ion-item>
               <ion-text color="danger">
-                <p style="margin: 0; font-size: 14px; color: #FFBB00;" [hidden]="!errorControl.email.errors?.pattern" class="ion-padding-start">
+                <p style="margin: 0; font-size: 14px; color: #2699FB;" [hidden]="!errorControl.email.errors?.pattern" class="ion-padding-start">
                   Ingrese un correo valido
                 </p>
               </ion-text> 
@@ -63,7 +63,7 @@
                 </ion-input>
               </ion-item>
               <ion-text color="danger">
-                <p style="margin: 0; font-size: 14px; color: #FFBB00;"   [hidden]="!errorControl.password.errors?.minlength" class="ion-padding-start">
+                <p style="margin: 0; font-size: 14px; color: #2699FB;"   [hidden]="!errorControl.password.errors?.minlength" class="ion-padding-start">
                   Contraseña debe contener mínimo 6 caracteres
                 </p>
               </ion-text>
@@ -80,7 +80,7 @@
                 </ion-input>
               </ion-item>
               <ion-text color="danger">
-                <p style="margin: 0; font-size: 14px; color: #FFBB00;" 
+                <p style="margin: 0; font-size: 14px; color: #2699FB;" 
                 [hidden]="!errorControl.confirm_password.errors?.confirmedValidator && 
                 !errorControl.confirm_password.errors?.minlength
                 " 
@@ -94,9 +94,8 @@
         
         </div>
         <div style="margin-top: 48px;">
-          <ion-button  style="margin: 0 auto; height: 60px; color: #fff; 
-          --border-radius: 23px;" 
-          expand="block" shape="round" class="finalUser second" mode='ios'
+          <ion-button  style="margin: 0 auto; height: 50px; padding: 0px 20px;; color: #fff;" 
+          expand="block"  class="finalUser second" 
           (click)="onSignup()" [disabled]="formGroup.status == 'INVALID' || !terms">REGÍSTRATE AHORA 
             <ion-ripple-effect type="unbounded"></ion-ripple-effect>
           </ion-button>
@@ -104,11 +103,10 @@
           <ion-item lines="none">
             <div class="container-terms">
               <ion-checkbox color="primary" mode="md" [(ngModel)]="terms"></ion-checkbox>
-              <p class="terms">He leído y acepto los <span style="color: #FFBB00;">
+              <p class="terms">He leído y acepto los <span style="color:#2699FB;">
                 términos y condiciones</span> </p>
             </div>
           </ion-item>
-         <p class="login" (click)="goTo('/login')" style="font-size: 15px;">¿Ya tienes una cuenta? <b> Ingresa </b></p>
         </div>
       </ion-col>
     </ion-row>
