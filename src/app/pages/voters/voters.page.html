@@ -31,42 +31,42 @@
       Inicio > Nuevo votante    
     </p>
 
-    <p>
+    <p (click)="back()">
       volver
     </p>
   </div>
   
   
-  <div class="container-table">
+  <form class="container-table" [formGroup]="formGroup">
 
     <ion-item>
       <ion-label position="floating" style="font-size: 15px;" >Nombre</ion-label>
-      <ion-input type="text">
+      <ion-input type="text"  formControlName="name" inputmode="text">
       </ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating" style="font-size: 15px;" >Apellido</ion-label>
-      <ion-input type="text">
+      <ion-input type="text" formControlName="lastname" inputmode="text">
       </ion-input>
     </ion-item>
 
 
     <ion-item>
-      <ion-label position="floating" style="font-size: 15px;" >Teléfono</ion-label>
-      <ion-input type="text">
+      <ion-label position="floating" style="font-size: 15px;">Teléfono</ion-label>
+      <ion-input type="text" formControlName="phone" inputmode="tel">
       </ion-input>
     </ion-item>
 
 
     
     <ion-item>
-      <ion-label position="floating" style="font-size: 15px;" >Email</ion-label>
-      <ion-input type="text">
+      <ion-label position="floating" style="font-size: 15px;">Email</ion-label>
+      <ion-input type="text" formControlName="email" inputmode="text">
       </ion-input>
     </ion-item>
 
-    <ion-input class="text-custom" placeholder="Red social" type="text">
+    <ion-input class="text-custom" placeholder="Red social" formControlName="facebook" inputmode="text">
       <ion-button class="btn-custom">
         Facebook
         <div class="detalles-btn">
@@ -77,20 +77,24 @@
     </ion-input>
 
     <ion-label style="font-size: 15px;" >Subir foto de perfil</ion-label>
-    <img src="https://via.placeholder.com/600" alt="Ionic Logo">
+    <img src="../../../assets/img/camara.png" alt="Ionic Logo" style="margin: 0 auto;display: block;" (click)="captureImage()" *ngIf="!imgSelected">
+    <img [src]="imgSelected" style="margin: 0 auto;display: block;"  (click)="captureImage()" *ngIf="imgSelected">
 
     <ion-item>
       <ion-label position="floating" style="font-size: 15px;" >Dirección</ion-label>
-      <ion-input type="text">
+      <ion-input type="text" formControlName="address" inputmode="text">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" style="font-size: 15px;" >Punto de votación</ion-label>
+      <ion-input type="text" formControlName="point" inputmode="text">
       </ion-input>
     </ion-item>
 
-
     <ion-label style="font-size: 15px;" >Selecciona en el mapa una ubicación</ion-label>
 
-    <img src="https://via.placeholder.com/600" alt="Ionic Logo">
-
-  </div>
+    <div #map id="map" style="height: 600px;width: 600px"></div>
+  </form>
 
 
   
@@ -102,7 +106,7 @@
   <div style="margin-bottom: 1rem;">
     <ion-button style=" --border-radius: 10px;
      margin: 0 auto; height: 50px; padding: 0px 20px;" 
-    expand="block">Guardar
+    expand="block" [disabled]='formGroup.status != "VALID"' (click)="add()">Guardar
       <ion-ripple-effect type="unbounded"></ion-ripple-effect>
     </ion-button>
   </div>

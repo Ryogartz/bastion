@@ -21,14 +21,14 @@ import { UserData } from './providers/user-data';
 export class AppComponent implements OnInit {
   appPages = [
     {
-      title: 'Dasboard',
-      url: '/app/tabs/dasboard',
-      icon: 'calendar'
+      title: 'Inicio',
+      url: '/dashboard',
+      icon: 'home'
     },
     {
-      title: 'Products',
-      url: '/products',
-      icon: 'calendar'
+      title: 'red',
+      url: '/red',
+      icon: 'people'
     },
  
   ];

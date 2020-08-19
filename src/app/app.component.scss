@@ -1,24 +1,32 @@
 ion-menu ion-content {
-  --padding-top: 20px;
+  --padding-top: 30px;
   --padding-bottom: 20px;
-
-  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+  --background: transparent url('../assets/img/Sidebar.BG.png');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; 
+/*   --background: var(--ion-item-background, var(--ion-background-color, #2699FB)); */
 }
 
 /* Remove background transitions for switching themes */
 ion-menu ion-item {
-  --transition: none;
+ /*  --transition: none; */
+ 
+  --background: #007CE6;
+  color: white;
 }
 
 ion-item.selected {
   --color: var(--ion-color-primary);
+  --bacground:#2699FB;
 }
 
 /*
  * Material Design Menu
 */
 ion-menu.md ion-list {
-  padding: 20px 0;
+  padding: 30px 0;
+  background:transparent;
 }
 
 ion-menu.md ion-list-header {
@@ -31,21 +39,21 @@ ion-menu.md ion-list-header {
 }
 
 ion-menu.md ion-item {
-  --padding-start: 18px;
+  --padding-start: 30px;
 
-  margin-right: 10px;
+  margin-right: 0px;
 
-  border-radius: 0 50px 50px 0;
+  border-radius: 0 0px 0px 0;
 
   font-weight: 500;
 }
 
 ion-menu.md ion-item.selected {
-  --background: rgba(var(--ion-color-primary-rgb), 0.14);
+  --background: #2699FB;
 }
 
 ion-menu.md ion-item.selected ion-icon {
-  color: var(--ion-color-primary);
+  color: #0067BF;
 }
 
 ion-menu.md ion-list-header,

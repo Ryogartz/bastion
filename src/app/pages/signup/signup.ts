@@ -76,8 +76,10 @@ export class SignupPage {
     //Metodo para obtener la informacion del usuario logueado
     async getUser(){
       // Iniciamos la consulta
-      await this.auth.getUser().then( ()=>{
-        this.navCtrl.navigateRoot('/app/tabs/dashboard');
+      await this.auth.getUser().then( (res)=>{
+        
+        localStorage.setItem("user", JSON.stringify(res))
+        this.navCtrl.navigateRoot('/dashboard');
       },(err)=>{
         //En caso de error
         this.utilities.displayToastButtonTime(err.error.message ? err.error.message : CONSTANTES.MESSAGES.error);

@@ -41,7 +41,7 @@
   
       </ion-input>
   
-      <ion-button class="btn-custom2">
+      <ion-button class="btn-custom2" (click)="goTo('/voters')">
         <ion-icon name="person-add"></ion-icon>
       </ion-button>
     </div>
@@ -51,28 +51,16 @@
         <p>Nombre y apellido</p>
         <p>Acción</p>
       </div>
-      <ion-item>
-        <ion-label>Maria perez</ion-label>
-          <ion-input></ion-input>
+      <ion-item *ngFor="let item of refereds" (click)="presentModal(item)">
+        <ion-label>{{item.name}} {{item.lastname}}</ion-label>
+        <!--   <ion-input></ion-input> -->
           <ion-icon item-end slot="end" name="{{showPass ? 'eye' : 'eye-off'}}"></ion-icon>
       </ion-item>
-      
-      <ion-item>
-        <ion-label>Maria perez</ion-label>
-          <ion-input></ion-input>
-          <ion-icon item-end slot="end" name="{{showPass ? 'eye' : 'eye-off'}}"></ion-icon>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label>Maria perez</ion-label>
-          <ion-input></ion-input>
-          <ion-icon item-end slot="end" name="{{showPass ? 'eye' : 'eye-off'}}"></ion-icon>
-      </ion-item>
-  
+     
     </div>
   
   
-    <div class="paginacion">
+  <!--   <div class="paginacion">
   
   
       <ion-button  class="btn-custom5">
@@ -105,7 +93,7 @@
         </div>
       </ion-button>
       
-    </div>
+    </div> -->
     
   
   </ion-content>

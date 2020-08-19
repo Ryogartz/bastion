@@ -1,6 +1,6 @@
 <!-- <ion-content color="light ion-padding ion-align-items-center">
  -->
-  <ion-card (click)="presentModal()">
+  <ion-card (click)="dismiss()">
     
     <ion-card-header>
       <ion-item lines="none">
@@ -9,18 +9,18 @@
         </ion-avatar>
         <ion-label>
          <!--  <ion-button (click)="clickedStar()" size="small" fill="outline"> -->
-            <ion-icon slot="icon-only" name="create" style="position: absolute;right: 40px;font-size: 1.5rem;"></ion-icon>
+            <ion-icon slot="icon-only" name="create" style="position: absolute;right: 40px;font-size: 1.5rem;" (click)="edit()"></ion-icon>
          <!--  </ion-button> -->
          <!--  <ion-button (click)="clickedStar()" size="small" fill="outline"> -->
             <ion-icon slot="icon-only" name="close" style="position: absolute;right: 10px;font-size: 1.5rem;" (click)="dismiss()"></ion-icon>
       <!--     </ion-button> -->
-          <h3>David James </h3>   
-          <ion-note>Medellín</ion-note><br>
-          <ion-note>Teléfono : +578715674877</ion-note><br>
-          <ion-note>Email: maria125d@gmail.com</ion-note><br>
-          <ion-note>Punto de votación: 5</ion-note><br>
+          <h3>{{item.name}} </h3>   
+          <ion-note>{{item.point}}</ion-note><br>
+          <ion-note>Teléfono : {{item.phone}}</ion-note><br>
+          <ion-note>Email: {{item.email}}</ion-note><br>
+          <ion-note>Punto de votación: null</ion-note><br>
           <div class="ion-padding cod">
-            <ion-icon name="people"></ion-icon>+56
+            <ion-icon name="people"></ion-icon>{{item.red}}
           </div>
         </ion-label>
       </ion-item>

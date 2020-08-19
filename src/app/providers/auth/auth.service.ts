@@ -71,6 +71,30 @@ export class AuthService {
     })
   }
 
+  public addrefere(form) {
+    return new Promise((resolve, reject) => {
+      const seq = this.api.post('api/auth/refered/add', form, true);
+      seq.subscribe((res: any) => {
+        resolve(res);
+        console.log(res);
+      }, err => {
+        reject(err);
+      });
+    })
+  }
+
+  public myrefered() {
+    return new Promise((resolve, reject) => {
+      const seq = this.api.post('api/auth/refered/myrefered', null, true);
+      seq.subscribe((res: any) => {
+        resolve(res);
+        console.log(res);
+      }, err => {
+        reject(err);
+      });
+    })
+  }
+
   public editUser(data) {
     return new Promise((resolve, reject) => {
       let observer:Observable<any> = this.api.post('api/auth/user', data, true);

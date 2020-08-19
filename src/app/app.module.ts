@@ -9,11 +9,11 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-/* import { ServiceWorkerModule } from '@angular/service-worker'; */
-import { environment } from '../environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-/* import { QRScanner } from '@ionic-native/qr-scanner/ngx'; */
-/* import { OneSignal } from '@ionic-native/onesignal/ngx'; */
+import { Camera } from '@ionic-native/camera/ngx';
+import {WebView} from '@ionic-native/ionic-webview/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -22,14 +22,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     IonicModule.forRoot(),
-    IonicStorageModule.forRoot(),
-    /* ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production
-    }) */
+    IonicStorageModule.forRoot()
   ],
   declarations: [AppComponent],
   providers: [InAppBrowser, SplashScreen, StatusBar, 
-    /* QRScanner */
+    Camera,
+    WebView,
+    Geolocation
   ],
   bootstrap: [AppComponent]
 })
