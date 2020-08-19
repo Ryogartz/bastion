@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./red.page.scss'],
 })
 export class RedPage implements OnInit {
+  user:any = [];
 
   constructor() { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
 }

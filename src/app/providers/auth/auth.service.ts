@@ -101,12 +101,13 @@ export class AuthService {
   }
 
   //buscar
-  public searchUser(data,page) {
+  public searchEmail(data) {
     return new Promise((resolve, reject) => {
-      let observer:Observable<any> = this.api.post(`api/auth/product/search?page=${page}`, data, true);
+      let observer:Observable<any> = this.api.post(`api/auth/chek-email`, data, false);
       observer.subscribe((res: any) => {
-        resolve(res);
-        console.log(res);
+        console.log(res.message)
+        const str = res['message'].includes("Available")
+        str == true ? resolve(true) : resolve(false)
       }, err => {
         reject(err);
       });
