@@ -30,7 +30,7 @@
     </p>
     
     <div class="container-btn">
-      <ion-input class="text-custom" placeholder="Buscar" type="text">
+      <ion-input class="text-custom" placeholder="Buscar" type="text" [(ngModel)]="busqueda" (ionChange)="search($event)" debounce="1000">
   
         <ion-button class="btn-custom">
           <div class="detalles-btn">
@@ -51,7 +51,7 @@
         <p>Nombre y apellido</p>
         <p>Acción</p>
       </div>
-      <ion-item *ngFor="let item of refereds" (click)="presentModal(item)">
+      <ion-item *ngFor="let item of searchResult" (click)="presentModal(item)">
         <ion-label>{{item.name}} {{item.lastname}}</ion-label>
         <!--   <ion-input></ion-input> -->
           <ion-icon item-end slot="end" name="{{showPass ? 'eye' : 'eye-off'}}"></ion-icon>

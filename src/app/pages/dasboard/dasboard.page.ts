@@ -21,6 +21,8 @@ export class DasboardPage implements OnInit {
   };
   user:any = [];
   refereds: any = [];
+  busqueda: string;
+  searchResult: any;
 
   constructor( private navCtrl: NavController,public modalController: ModalController,  public auth: AuthService, private utilities: UtilitiesService) { }
 
@@ -66,6 +68,7 @@ export class DasboardPage implements OnInit {
     await this.auth.myrefered().then( (res)=>{
       console.log(res);
       this.refereds = res['users'];
+      this.searchResult = this.refereds;
     },(err)=>{
       //En caso de error
       this.utilities.displayToastButtonTime(err.error.message ? err.error.message : CONSTANTES.MESSAGES.error);
@@ -73,4 +76,21 @@ export class DasboardPage implements OnInit {
     })
   }
 
+  search(){
+    if(this.busqueda != ''){
+      let result = this.refereds.filter((item) => {
+        return item.name.toLowerCase().indexOf(
+          this.busqueda.toLowerCase()) > -1;
+        });
+        if (result.length > 0) {
+          this.searchResult = result;
+        }else{
+          this.searchResult = this.refereds;
+        }
+        console.log(result);
+        
+    }else{
+      this.searchResult = this.refereds;
+    }
+  }
 }
