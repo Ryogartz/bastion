@@ -11,6 +11,7 @@ import { Storage } from '@ionic/storage';
 
 import { UserData } from './providers/user-data';
 import { AuthService } from './providers/auth/auth.service';
+import { CONSTANTES } from './providers/constantes';
 
 /* import { OneSignal } from '@ionic-native/onesignal/ngx'; */
 @Component({
@@ -138,5 +139,9 @@ export class AppComponent implements OnInit {
     this.menu.enable(false);
     this.storage.set('ion_did_tutorial', false);
     this.router.navigateByUrl('/tutorial');
+  }
+
+  logIn(){
+    return localStorage.getItem(CONSTANTES.LOCAL_STORAGE.token);
   }
 }

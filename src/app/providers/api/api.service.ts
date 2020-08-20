@@ -14,7 +14,7 @@ import {
     providedIn: 'root'
 })
 export class ApiService {
-    url = 'http://valdusoft.com/bastian'; //url apibase
+    url = 'https://valdusoft.com/bastian'; //url apibase
     constructor(public http: HttpClient) {}
 
     get(endpoint: string, params ? : any, reqOpts ? : any) {
