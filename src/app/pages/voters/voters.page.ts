@@ -22,6 +22,7 @@ export class VotersPage implements OnInit {
   map: any;
   public formGroup: FormGroup;
   data: any;
+  marker: any;
   constructor(private navCtrl: NavController,
               private webView: WebView, 
               private alertCtrl: AlertController,
@@ -43,12 +44,12 @@ export class VotersPage implements OnInit {
                       phone: [this.data.phone, Validators.compose([Validators.required])],
                       point: [this.data.point, Validators.compose([Validators.required])],
                       facebook: [this.data.facebook, Validators.compose([Validators.required])],
-                      photo: [this.data.avatar, Validators.compose([Validators.required])],
+                      photo: ['https://valdusoft.com/bastian/avatar/'+this.data.avatar, Validators.compose([Validators.required])],
                       longitud: [this.data.latitude],
                       latitud: [this.data.longitude],
                       address: [this.data.address, Validators.compose([Validators.required])],
                     });
-                    this.imgSelected = this.data.avatar;
+                    this.imgSelected = "https://valdusoft.com/bastian/avatar/"+this.data.avatar;
                   }else{
                     this.formGroup = this.fb.group({
                       email: ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')])],
@@ -155,11 +156,24 @@ export class VotersPage implements OnInit {
     };
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapoption);
-    const markerIcon = {
-      url: '../../../assets/images/near-by/map-image.png',
-      labelOrigin: new google.maps.Point(25, 63),
-      scaledSize: new google.maps.Size(56, 64)
-    };
+    this.marker = new google.maps.Marker({
+      map: this.map,
+      draggable: true,
+      icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+      animation: google.maps.Animation.DROP,
+      position: {lat: coords.coords.latitude, lng: coords.coords.longitude}
+    });
+    google.maps.event.addListener(this.map, 'click', (event) => {
+      this.marker.setPosition(event.latLng)
+      this.formGroup.controls.longitud.setValue(event.latLng.lng());
+      this.formGroup.controls.latitud.setValue(event.latLng.lat());
+    });
+    this.marker.addListener('dragend', (event)=> {
+      this.formGroup.controls.longitud.setValue(event.latLng.lng());
+      this.formGroup.controls.latitud.setValue(event.latLng.lat());
+ }); 
+    this.marker.setMap(this.map);
+ 
    /*  markerData.forEach((element: any, index) => {
       const marker = new google.maps.Marker({
         position: new google.maps.LatLng(element.lat, element.lng),
@@ -173,6 +187,13 @@ export class VotersPage implements OnInit {
         }
       });
     }); */
+  }
+  toggleBounce() {
+    if (this.marker.getAnimation() !== null) {
+      this.marker.setAnimation(null);
+    } else {
+      this.marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
   }
 
   async add(){
