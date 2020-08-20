@@ -86,7 +86,7 @@ export class LoginPage {
     // Iniciamos la consulta
     await this.auth.getUser().then( (res)=>{
       localStorage.setItem('user', JSON.stringify(res));
-      this.navCtrl.navigateRoot('/app/tabs/dashboard');
+      this.navCtrl.navigateRoot('/dashboard');
     },(err)=>{
       //En caso de error
       this.utilities.displayToastButtonTime(err.error.message ? err.error.message : CONSTANTES.MESSAGES.error);

@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Storage } from '@ionic/storage';
 
 import { UserData } from './providers/user-data';
+import { AuthService } from './providers/auth/auth.service';
 
 /* import { OneSignal } from '@ionic-native/onesignal/ngx'; */
 @Component({
@@ -26,9 +27,13 @@ export class AppComponent implements OnInit {
       icon: 'home'
     },
     {
-      title: 'red',
+      title: 'Red',
       url: '/red',
       icon: 'people'
+    },
+    {
+      title: 'Salir',
+      icon: 'log-out'
     },
  
   ];
@@ -43,6 +48,7 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     private storage: Storage,
     private userData: UserData,
+    private service: AuthService,
     /* private oneSignal: OneSignal, */
   /*   private swUpdate: SwUpdate, */
     private toastCtrl: ToastController,
@@ -112,11 +118,21 @@ export class AppComponent implements OnInit {
     });
   }
 
-  logout() {
-    this.userData.logout().then(() => {
-      return this.router.navigateByUrl('/app/tabs/dasboard');
-    });
+  logout(data) {
+
+    if( data === "Salir"){
+
+      this.service.logOut().then(() => {
+        return this.router.navigateByUrl('/login');
+      });
+
+    }else{
+      return
+    }
+
   }
+
+
 
   openTutorial() {
     this.menu.enable(false);
