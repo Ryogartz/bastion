@@ -1,10 +1,13 @@
-ion-menu ion-content {
-  --padding-top: 30px;
-  --padding-bottom: 20px;
-  --background: transparent url('../assets/img/Sidebar.BG.png');
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; 
+ion-menu {
+
+  ion-content{
+    --padding-top: 30px;
+    --padding-bottom: 20px;
+    --background: transparent url('../assets/img/Sidebar.BG.png');
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; 
+  }
 /*   --background: var(--ion-item-background, var(--ion-background-color, #2699FB)); */
 }
 
