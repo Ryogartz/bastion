@@ -33,6 +33,11 @@ export class AppComponent implements OnInit {
       icon: 'people'
     },
     {
+      title: 'Insides',
+      url: '/personality',
+      icon: 'people'
+    },
+    {
       title: 'Salir',
       icon: 'log-out'
     },

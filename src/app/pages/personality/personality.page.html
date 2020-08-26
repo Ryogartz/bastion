@@ -1,0 +1,189 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" ios="chevron-down" md="chevron-down"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-end">
+      <div class="btn-notification">
+        <ion-badge color="primary" >66</ion-badge>
+        <ion-icon name="notifications">
+        </ion-icon>
+      </div>
+      {{user.user.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light ion-padding ion-align-items-center">
+  <ng-container *ngIf="step == '1'">
+    <p class="ion-text-center tilt-in-right-1">
+      ¿Quieres descubrir cuales son tus superpoderes?
+    </p>
+    
+  
+      <ion-button expand="block" class="tilt-in-right-1" (click)="step='2'">
+        ¡Empezar!
+      </ion-button>
+      
+      <div class="hero tilt-in-right-1">
+        <img src="./assets/img/superpoder.png" >
+      </div>
+  </ng-container>
+  <div *ngIf="step > 1">
+    <ion-progress-bar [value]="progressBar()" [buffer]="progressBuffer()"></ion-progress-bar>
+  </div>
+  <ng-container *ngIf="step =='2'">
+   
+    <p class="text-title ion-text-center tilt-in-right-1">
+      Por favor ingresa tu nombre <br>
+       completo y tu edad
+    </p>
+    <ion-item class="tilt-in-right-1">
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item class="tilt-in-right-1">
+      <ion-label position="floating">Edad</ion-label>
+      <ion-select placeholder="Seleccione">
+        <ion-select-option value="f">Female</ion-select-option>
+        <ion-select-option value="m">Male</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+      
+      <div class="person tilt-in-right-1">
+        <img src="./assets/img/datos.png"  style="width: 60%;margin: 1rem auto;position: relative;right: 0rem;">
+        <div>
+          <ion-button class="back" (click)="step='1'">
+            Atrás
+          </ion-button>
+          <ion-button (click)="step='3'">Siguiente</ion-button>
+        </div>
+      </div>
+  </ng-container>
+  <ng-container *ngIf="step =='3'">
+ 
+
+  <p class="text-title ion-text-center tilt-in-right-1">
+    Si pudieras ser un héroe o <br>
+     villano, ¿Quién te gustaría ser? <br>
+      ¿Por qué?
+  </p>
+  <ion-item class="tilt-in-right-1">
+    <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+
+    
+    <div class="person tilt-in-right-1">
+      <img src="./assets/img/superheroes.png" >
+      <div>
+        <ion-button class="back" (click)="step='2'">
+          Atrás
+        </ion-button>
+        <ion-button (click)="step='4'">Siguiente</ion-button>
+      </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="step =='4'">
+ 
+<p class="text-title ion-text-center tilt-in-right-1">
+  ¿Cuál sería tu poder? <br>
+   ¿Por qué?
+</p>
+<ion-item class="tilt-in-right-1">
+  <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+
+
+  
+  <div class="person tilt-in-right-1">
+    <img src="./assets/img/poderes.png" >
+    <div>
+      <ion-button class="back" (click)="step='3'">
+        Atrás
+      </ion-button>
+      <ion-button (click)="step='5'">Siguiente</ion-button>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="step =='5'">
+ 
+<p class="text-title ion-text-center tilt-in-right-1" style="font-size: 1.3rem;">
+  ¿Prefieres una persona honesta <br>
+   o una persona que solo te diga <br>
+    lo que quieres escuchar? <br>
+     ¿Por qué?
+</p>
+<ion-item class="tilt-in-right-1">
+  <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+
+
+  
+  <div class="person tilt-in-right-1">
+    <img src="./assets/img/honestidad.png" >
+    <div>
+      <ion-button class="back" (click)="step='4'">
+        Atrás
+      </ion-button>
+      <ion-button (click)="step='6'">Siguiente</ion-button>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="step =='6'">
+ 
+  
+<p class="text-title ion-text-center tilt-in-right-1" style="font-size: 1.4rem;">
+  Si pudieras regresar el tiempo, <br>
+   ¿A qué punto de tu vida lo <br>
+    harías?
+</p>
+<ion-item class="tilt-in-right-1">
+  <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+
+
+  
+  <div class="person tilt-in-right-1">
+    <img src="./assets/img/tirmpo.png" >
+    <div>
+      <ion-button class="back" (click)="step='5'">
+        Atrás
+      </ion-button>
+      <ion-button (click)="step='7'">Siguiente</ion-button>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="step =='7'">
+ 
+<p class="text-title ion-text-center tilt-in-right-1" style="font-size: 1.4rem;">
+  ¿Cómo es un día ideal para ti?
+</p>
+<ion-item class="tilt-in-right-1">
+  <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+
+
+  
+  <div class="person tilt-in-right-1">
+    <img src="./assets/img/dia-ideal.png" >
+    <div>
+      <ion-button class="back" (click)="step='6'">
+        Atrás
+      </ion-button>
+      <ion-button (click)="goTo('/results')">Siguiente</ion-button>
+    </div>
+  </div>
+</ng-container>
+  </ion-content>
