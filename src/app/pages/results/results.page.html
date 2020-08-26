@@ -39,31 +39,31 @@
     <ion-col size="6" class="ion-text-center">
       <img src="./assets/img/agil.svg" alt="">
       <p style="font-size: 1.5rem;padding: 0;margin: 0;">Audacia</p>
-      <p style="padding: 0;margin: 0;">17%</p>
+      <p style="padding: 0;margin: 0;"> {{calculo(data['Audacia'].N*100, sumatoria)}} %</p>
     </ion-col>
     <ion-col size="6">
       <img src="./assets/img/cerebro(1).svg" alt="">
-      <p style="font-size: 1.5rem;padding: 0;margin: 0;">Audacia</p>
-      <p style="padding: 0;margin: 0;">17%</p>
+      <p style="font-size: 1.5rem;padding: 0;margin: 0;">Intelecto</p>
+      <p style="padding: 0;margin: 0;">{{calculo(data['Intelecto'].N*100, sumatoria)}} %</p>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col size="6">
       <img src="./assets/img/especialista.svg" alt="">
-      <p style="font-size: 1.5rem;padding: 0;margin: 0;">Audacia</p>
-      <p style="padding: 0;margin: 0;">17%</p>
+      <p style="font-size: 1.5rem;padding: 0;margin: 0;">Autodisciplina</p>
+      <p style="padding: 0;margin: 0;">{{calculo(data['Autodisciplina'].N*100, sumatoria)}} %</p>
     </ion-col>
     <ion-col size="6">
       <img src="./assets/img/usuario.svg" alt="">
-      <p style="font-size: 1.5rem;padding: 0;margin: 0;">Audacia</p>
-      <p style="padding: 0;margin: 0;">17%</p>
+      <p style="font-size: 1.5rem;padding: 0;margin: 0;">Sociabilidad</p>
+      <p style="padding: 0;margin: 0;">{{calculo(data['Sociabilidad'].N*100, sumatoria)}} %</p>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col size="6">
       <img src="./assets/img/conciencia.svg" alt="">
-      <p style="font-size: 1.5rem;padding: 0;margin: 0;">Audacia</p>
-      <p style="padding: 0;margin: 0;">17%</p>
+      <p style="font-size: 1.5rem;padding: 0;margin: 0;">Responsabilidad</p>
+      <p style="padding: 0;margin: 0;">{{calculo(data['Responsabilidad'].N*100, sumatoria)}} %</p>
     </ion-col>
   </ion-row>
 </ion-grid>

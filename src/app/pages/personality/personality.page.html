@@ -43,18 +43,24 @@
       Por favor ingresa tu nombre <br>
        completo y tu edad
     </p>
-    <ion-item class="tilt-in-right-1">
+    <form [formGroup]="formGroup">
+    <ion-item class="tilt-in-right-1" [ngClass]="{'errorInput': formGroup.controls.Nombre.errors?.pattern}">
       <ion-label position="floating">Nombre</ion-label>
-      <ion-input></ion-input>
+      <ion-input formControlName="Nombre" 
+      inputmode="text" required></ion-input>
     </ion-item>
-    <ion-item class="tilt-in-right-1">
+    <ion-item class="tilt-in-right-1" [ngClass]="{'errorInput': formGroup.controls.Edad.errors?.required}">
       <ion-label position="floating">Edad</ion-label>
-      <ion-select placeholder="Seleccione">
-        <ion-select-option value="f">Female</ion-select-option>
-        <ion-select-option value="m">Male</ion-select-option>
+      <ion-select placeholder="Seleccione" formControlName="Edad" required>
+        <ion-select-option value="18">18 - 25</ion-select-option>
+        <ion-select-option value="25">25 - 32</ion-select-option>
+        <ion-select-option value="32">32 - 40</ion-select-option>
+        <ion-select-option value="40">40 - 52</ion-select-option>
+        <ion-select-option value="52">52 - 60</ion-select-option>
+        <ion-select-option value="60">60+</ion-select-option>
       </ion-select>
     </ion-item>
-
+  </form>
       
       <div class="person tilt-in-right-1">
         <img src="./assets/img/datos.png"  style="width: 60%;margin: 1rem auto;position: relative;right: 0rem;">
@@ -62,7 +68,7 @@
           <ion-button class="back" (click)="step='1'">
             Atrás
           </ion-button>
-          <ion-button (click)="step='3'">Siguiente</ion-button>
+          <ion-button (click)="step='3'" [disabled]='formGroup.controls.Nombre.errors || formGroup.controls.Edad.errors'>Siguiente</ion-button>
         </div>
       </div>
   </ng-container>
@@ -74,12 +80,14 @@
      villano, ¿Quién te gustaría ser? <br>
       ¿Por qué?
   </p>
-  <ion-item class="tilt-in-right-1">
+  <form [formGroup]="formGroup">
+  <ion-item class="tilt-in-right-1 " [ngClass]="{'errorInput': formGroup.controls.p1.errors?.required}">
     <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
-    <ion-input></ion-input>
+    <ion-input formControlName="p1" 
+    inputmode="text" required></ion-input>
   </ion-item>
-
-
+    <ion-label position="floating" color="danger" *ngIf="formGroup.controls.p1.errors" style="font-size: 1rem;">Debe escribir al menos 140 caracteres</ion-label>
+</form>
     
     <div class="person tilt-in-right-1">
       <img src="./assets/img/superheroes.png" >
@@ -87,7 +95,7 @@
         <ion-button class="back" (click)="step='2'">
           Atrás
         </ion-button>
-        <ion-button (click)="step='4'">Siguiente</ion-button>
+        <ion-button (click)="step='4'" [disabled]='formGroup.controls.p1.errors'>Siguiente</ion-button>
       </div>
     </div>
 </ng-container>
@@ -97,11 +105,15 @@
   ¿Cuál sería tu poder? <br>
    ¿Por qué?
 </p>
-<ion-item class="tilt-in-right-1">
-  <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
-  <ion-input></ion-input>
-</ion-item>
+<form [formGroup]="formGroup">
+  <ion-item class="tilt-in-right-1 " [ngClass]="{'errorInput': formGroup.controls.p2.errors?.required}">
+    <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
+    <ion-input formControlName="p2" 
+    inputmode="text" required></ion-input>
+  </ion-item>
+  <ion-label position="floating" color="danger" *ngIf="formGroup.controls.p2.errors" style="font-size: 1rem;">Debe escribir al menos 140 caracteres</ion-label>
 
+</form>
 
   
   <div class="person tilt-in-right-1">
@@ -110,7 +122,7 @@
       <ion-button class="back" (click)="step='3'">
         Atrás
       </ion-button>
-      <ion-button (click)="step='5'">Siguiente</ion-button>
+      <ion-button (click)="step='5'" [disabled]='formGroup.controls.p2.errors'>Siguiente</ion-button>
     </div>
   </div>
 </ng-container>
@@ -122,10 +134,15 @@
     lo que quieres escuchar? <br>
      ¿Por qué?
 </p>
-<ion-item class="tilt-in-right-1">
-  <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
-  <ion-input></ion-input>
-</ion-item>
+<form [formGroup]="formGroup">
+  <ion-item class="tilt-in-right-1" [ngClass]="{'errorInput': formGroup.controls.p3.errors?.required}">
+    <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
+    <ion-input formControlName="p3" 
+    inputmode="text" required></ion-input>
+  </ion-item>
+  <ion-label position="floating" color="danger" *ngIf="formGroup.controls.p3.errors" style="font-size: 1rem;">Debe escribir al menos 140 caracteres</ion-label>
+
+</form>
 
 
   
@@ -135,7 +152,7 @@
       <ion-button class="back" (click)="step='4'">
         Atrás
       </ion-button>
-      <ion-button (click)="step='6'">Siguiente</ion-button>
+      <ion-button (click)="step='6'" [disabled]='formGroup.controls.p3.errors'>Siguiente</ion-button>
     </div>
   </div>
 </ng-container>
@@ -147,10 +164,15 @@
    ¿A qué punto de tu vida lo <br>
     harías?
 </p>
-<ion-item class="tilt-in-right-1">
-  <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
-  <ion-input></ion-input>
-</ion-item>
+<form [formGroup]="formGroup">
+  <ion-item class="tilt-in-right-1 " [ngClass]="{'errorInput': formGroup.controls.p4.errors?.required}">
+    <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
+    <ion-input formControlName="p4" 
+    inputmode="text" required></ion-input>
+  </ion-item>
+  <ion-label position="floating" color="danger" *ngIf="formGroup.controls.p4.errors" style="font-size: 1rem;">Debe escribir al menos 140 caracteres</ion-label>
+
+</form>
 
 
   
@@ -160,7 +182,7 @@
       <ion-button class="back" (click)="step='5'">
         Atrás
       </ion-button>
-      <ion-button (click)="step='7'">Siguiente</ion-button>
+      <ion-button (click)="step='7'" [disabled]='formGroup.controls.p4.errors'>Siguiente</ion-button>
     </div>
   </div>
 </ng-container>
@@ -169,10 +191,15 @@
 <p class="text-title ion-text-center tilt-in-right-1" style="font-size: 1.4rem;">
   ¿Cómo es un día ideal para ti?
 </p>
-<ion-item class="tilt-in-right-1">
-  <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
-  <ion-input></ion-input>
-</ion-item>
+<form [formGroup]="formGroup">
+  <ion-item class="tilt-in-right-1 " [ngClass]="{'errorInput': formGroup.controls.p5.errors?.required}">
+    <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
+    <ion-input formControlName="p5" 
+    inputmode="text" required></ion-input>
+  </ion-item>
+  <ion-label position="floating" color="danger" *ngIf="formGroup.controls.p5.errors" style="font-size: 1rem;">Debe escribir al menos 140 caracteres</ion-label>
+
+</form>
 
 
   
@@ -182,7 +209,7 @@
       <ion-button class="back" (click)="step='6'">
         Atrás
       </ion-button>
-      <ion-button (click)="goTo('/results')">Siguiente</ion-button>
+      <ion-button (click)="sendData()" [disabled]='formGroup.controls.p5.errors'>Siguiente</ion-button>
     </div>
   </div>
 </ng-container>

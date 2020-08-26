@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { single } from './data';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-results',
@@ -8,9 +9,35 @@ import { single } from './data';
 })
 export class ResultsPage implements OnInit {
   user: any [];
+  data: any;
+  sumatoria: number;
 
-  constructor() {
+  constructor( private route: ActivatedRoute) {
+   
+    this.route.queryParams.subscribe(data => {
+      this.data = JSON.parse(data['data']);
+ 
     Object.assign(this, { single });
+    console.log(this.data);
+  this.sumatoria = 0; 
+  this.sumatoria+= this.data['Audacia'].N*100;
+  this.sumatoria+= this.data['Intelecto'].N*100;
+  this.sumatoria+= this.data['Autodisciplina'].N*100;
+  this.sumatoria+= this.data['Sociabilidad'].N*100;
+  this.sumatoria+= this.data['Responsabilidad'].N*100;
+  console.log(this.sumatoria);
+  console.log(this.calculo(this.data['Audacia'].N*100, this.sumatoria))
+    this.single[0].value = this.data['Audacia'].N*100;
+    this.single[1].value = this.data['Intelecto'].N*100;
+    this.single[2].value = this.data['Autodisciplina'].N*100;
+    this.single[3].value = this.data['Sociabilidad'].N*100;
+    this.single[4].value = this.data['Responsabilidad'].N*100; 
+    console.log(single);
+
+  })
+   }
+   calculo(c, b){
+     return (c/b*100).toFixed(1);
    }
 
   ngOnInit() {

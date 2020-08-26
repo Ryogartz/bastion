@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api/api.service';
 import { Observable } from 'rxjs/internal/Observable';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
   constructor(
-    private api: ApiService
+    private api: ApiService,
+    public http: HttpClient
   ) { }
 
 
@@ -96,6 +98,8 @@ export class AuthService {
   }
 
   public editUser(form) {
+    console.log(form);
+
     return new Promise((resolve, reject) => {
       let observer:Observable<any> = this.api.post('api/auth/refered/update-refered', form, true);
       observer.subscribe((res: any) => {
@@ -103,6 +107,33 @@ export class AuthService {
         console.log(res);
       }, err => {
         reject(err);
+      });
+    })
+  }
+  
+  public personality(form:any) {
+
+    return new Promise((resolve, reject) => {
+      let reqOpts = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/x-www-form-urlencoded'
+        })
+    };
+    const body = new HttpParams()
+    .set('Nombre', form.controls.Nombre.value)
+    .set('Edad', form.controls.Edad.value)
+    .set('p1', form.controls.p1.value)
+    .set('p2', form.controls.p2.value)
+    .set('p3', form.controls.p3.value)
+    .set('p4', form.controls.p4.value)
+    .set('p5', form.controls.p5.value);
+      let observer:Observable<any> = this.http.post('https://personality-insights-bastian.herokuapp.com/upload', body.toString(), reqOpts);
+      observer.subscribe((res: any) => {
+        resolve(res);
+        console.log(res);
+      }, err => {
+        reject(err);
+        console.log(err);
       });
     })
   }
