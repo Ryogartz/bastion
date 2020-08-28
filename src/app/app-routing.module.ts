@@ -73,7 +73,19 @@ const routes: Routes = [
   {
     path: 'pages-modal-edit',
     loadChildren: () => import('./pages-modal-edit/pages-modal-edit.module').then( m => m.PagesModalEditPageModule)
+  },  {
+    path: 'personality',
+    loadChildren: () => import('./pages/personality/personality.module').then( m => m.PersonalityPageModule)
+  },
+  {
+    path: 'results',
+    loadChildren: () => import('./pages/results/results.module').then( m => m.ResultsPageModule)
+  },
+  {
+    path: 'splash',
+    loadChildren: () => import('./splash/splash.module').then( m => m.SplashPageModule)
   }
+
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

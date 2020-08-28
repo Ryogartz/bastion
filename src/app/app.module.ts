@@ -13,13 +13,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Camera } from '@ionic-native/camera/ngx';
 import {WebView} from '@ionic-native/ionic-webview/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgxChartsModule,
     ReactiveFormsModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot()

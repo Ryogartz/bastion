@@ -35,6 +35,9 @@
     "@ionic-native/status-bar": "^5.27.0",
     "@ionic/angular": "^5.2.2",
     "@ionic/storage": "^2.2.0",
+    "@angular/animations": "~10.0.6",
+    "@angular/cdk": "^10.1.1",
+    "@swimlane/ngx-charts": "^14.0.0",
     "angularfire2": "^5.4.2",
     "cordova-android": "^7.1.4",
     "cordova-ios": "^4.5.5",
@@ -51,6 +54,7 @@
     "moment": "^2.27.0",
     "mugan86-cronometro": "^1.0.1",
     "rxjs": "~6.5.5",
+    "save": "^2.4.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },

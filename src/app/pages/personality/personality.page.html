@@ -1,0 +1,212 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" ios="chevron-down" md="chevron-down"></ion-icon>
+      </ion-button>
+    </ion-buttons><!--  -->
+
+    <ion-title class="ion-text-end">
+    <!--  -->
+      {{user.user.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light ion-padding ion-align-items-center">
+  <ng-container *ngIf="step == '1'">
+    <p class="ion-text-center tilt-in-right-1">
+      ¿Quieres descubrir cuales son tus superpoderes?
+    </p>
+    
+  
+      <ion-button expand="block" class="tilt-in-right-1" (click)="step='2'">
+        ¡Empezar!
+      </ion-button>
+      
+      <div class="hero tilt-in-right-1">
+        <img src="./assets/img/superpoder.png" >
+      </div>
+  </ng-container>
+  <div *ngIf="step > 1">
+    <ion-progress-bar [value]="progressBar()" [buffer]="progressBuffer()"></ion-progress-bar>
+  </div>
+  <ng-container *ngIf="step =='2'">
+   
+    <p class="text-title ion-text-center tilt-in-right-1">
+      Por favor ingresa tu nombre <br>
+       completo y tu edad
+    </p>
+    <form [formGroup]="formGroup">
+    <ion-item class="tilt-in-right-1" [ngClass]="{'errorInput': formGroup.controls.Nombre.errors?.pattern}">
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input formControlName="Nombre" 
+      inputmode="text" required></ion-input>
+    </ion-item>
+    <ion-item class="tilt-in-right-1" [ngClass]="{'errorInput': formGroup.controls.Edad.errors?.required}">
+      <ion-label position="floating">Edad</ion-label>
+      <ion-select placeholder="Seleccione" formControlName="Edad" required>
+        <ion-select-option value="18">18 - 25</ion-select-option>
+        <ion-select-option value="25">25 - 32</ion-select-option>
+        <ion-select-option value="32">32 - 40</ion-select-option>
+        <ion-select-option value="40">40 - 52</ion-select-option>
+        <ion-select-option value="52">52 - 60</ion-select-option>
+        <ion-select-option value="60">60+</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </form>
+      
+      <div class="person tilt-in-right-1">
+        <img src="./assets/img/datos.png"  style="width: 60%;margin: 1rem auto;position: relative;right: 0rem;">
+        <div>
+          <ion-button class="back" (click)="step='1'">
+            Atrás
+          </ion-button>
+          <ion-button (click)="step='3'" [disabled]='formGroup.controls.Nombre.errors || formGroup.controls.Edad.errors'>Siguiente</ion-button>
+        </div>
+      </div>
+  </ng-container>
+  <ng-container *ngIf="step =='3'">
+ 
+
+  <p class="text-title ion-text-center tilt-in-right-1">
+    Si pudieras ser un héroe o <br>
+     villano, ¿Quién te gustaría ser? <br>
+      ¿Por qué?
+  </p>
+  <form [formGroup]="formGroup">
+  <ion-item class="tilt-in-right-1 " [ngClass]="{'errorInput': formGroup.controls.p1.errors?.required}">
+    <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
+    <ion-input formControlName="p1" 
+    inputmode="text" required></ion-input>
+  </ion-item>
+    <ion-label position="floating" color="danger" *ngIf="formGroup.controls.p1.errors" style="font-size: 1rem;">Debe escribir al menos 100 caracteres</ion-label>
+</form>
+    
+    <div class="person tilt-in-right-1">
+      <img src="./assets/img/superheroes.png" >
+      <div>
+        <ion-button class="back" (click)="step='2'">
+          Atrás
+        </ion-button>
+        <ion-button (click)="step='4'" [disabled]='formGroup.controls.p1.errors'>Siguiente</ion-button>
+      </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="step =='4'">
+ 
+<p class="text-title ion-text-center tilt-in-right-1">
+  ¿Cuál sería tu poder? <br>
+   ¿Por qué?
+</p>
+<form [formGroup]="formGroup">
+  <ion-item class="tilt-in-right-1 " [ngClass]="{'errorInput': formGroup.controls.p2.errors?.required}">
+    <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
+    <ion-input formControlName="p2" 
+    inputmode="text" required></ion-input>
+  </ion-item>
+  <ion-label position="floating" color="danger" *ngIf="formGroup.controls.p2.errors" style="font-size: 1rem;">Debe escribir al menos 100 caracteres</ion-label>
+
+</form>
+
+  
+  <div class="person tilt-in-right-1">
+    <img src="./assets/img/poderes.png" >
+    <div>
+      <ion-button class="back" (click)="step='3'">
+        Atrás
+      </ion-button>
+      <ion-button (click)="step='5'" [disabled]='formGroup.controls.p2.errors'>Siguiente</ion-button>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="step =='5'">
+ 
+<p class="text-title ion-text-center tilt-in-right-1" style="font-size: 1.3rem;">
+  ¿Prefieres una persona honesta <br>
+   o una persona que solo te diga <br>
+    lo que quieres escuchar? <br>
+     ¿Por qué?
+</p>
+<form [formGroup]="formGroup">
+  <ion-item class="tilt-in-right-1" [ngClass]="{'errorInput': formGroup.controls.p3.errors?.required}">
+    <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
+    <ion-input formControlName="p3" 
+    inputmode="text" required></ion-input>
+  </ion-item>
+  <ion-label position="floating" color="danger" *ngIf="formGroup.controls.p3.errors" style="font-size: 1rem;">Debe escribir al menos 100 caracteres</ion-label>
+
+</form>
+
+
+  
+  <div class="person tilt-in-right-1">
+    <img src="./assets/img/honestidad.png" >
+    <div>
+      <ion-button class="back" (click)="step='4'">
+        Atrás
+      </ion-button>
+      <ion-button (click)="step='6'" [disabled]='formGroup.controls.p3.errors'>Siguiente</ion-button>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="step =='6'">
+ 
+  
+<p class="text-title ion-text-center tilt-in-right-1" style="font-size: 1.4rem;">
+  Si pudieras regresar el tiempo, <br>
+   ¿A qué punto de tu vida lo <br>
+    harías?
+</p>
+<form [formGroup]="formGroup">
+  <ion-item class="tilt-in-right-1 " [ngClass]="{'errorInput': formGroup.controls.p4.errors?.required}">
+    <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
+    <ion-input formControlName="p4" 
+    inputmode="text" required></ion-input>
+  </ion-item>
+  <ion-label position="floating" color="danger" *ngIf="formGroup.controls.p4.errors" style="font-size: 1rem;">Debe escribir al menos 100 caracteres</ion-label>
+
+</form>
+
+
+  
+  <div class="person tilt-in-right-1">
+    <img src="./assets/img/tirmpo.png" >
+    <div>
+      <ion-button class="back" (click)="step='5'">
+        Atrás
+      </ion-button>
+      <ion-button (click)="step='7'" [disabled]='formGroup.controls.p4.errors'>Siguiente</ion-button>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="step =='7'">
+ 
+<p class="text-title ion-text-center tilt-in-right-1" style="font-size: 1.4rem;">
+  ¿Cómo es un día ideal para ti?
+</p>
+<form [formGroup]="formGroup">
+  <ion-item class="tilt-in-right-1 " [ngClass]="{'errorInput': formGroup.controls.p5.errors?.required}">
+    <ion-label position="floating">Escribe tu respuesta aquí</ion-label>
+    <ion-input formControlName="p5" 
+    inputmode="text" required></ion-input>
+  </ion-item>
+  <ion-label position="floating" color="danger" *ngIf="formGroup.controls.p5.errors" style="font-size: 1rem;">Debe escribir al menos 100 caracteres</ion-label>
+
+</form>
+
+
+  
+  <div class="person tilt-in-right-1">
+    <img src="./assets/img/dia-ideal.png" >
+    <div>
+      <ion-button class="back" (click)="step='6'">
+        Atrás
+      </ion-button>
+      <ion-button (click)="sendData()" [disabled]='formGroup.controls.p5.errors'>Siguiente</ion-button>
+    </div>
+  </div>
+</ng-container>
+  </ion-content>
