@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 /* import { SwUpdate } from '@angular/service-worker';
  */
-import { MenuController, Platform, ToastController } from '@ionic/angular';
+import { MenuController, Platform, ToastController, NavController } from '@ionic/angular';
 
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -12,6 +12,7 @@ import { Storage } from '@ionic/storage';
 import { UserData } from './providers/user-data';
 import { AuthService } from './providers/auth/auth.service';
 import { CONSTANTES } from './providers/constantes';
+import { UtilitiesService } from './providers/utilities/utilities.service';
 
 /* import { OneSignal } from '@ionic-native/onesignal/ngx'; */
 @Component({
@@ -33,8 +34,8 @@ export class AppComponent implements OnInit {
       icon: 'people'
     },
     {
-      title: 'Insides',
-      url: '/personality',
+      title: 'Insight',
+      url: '',
       icon: 'people'
     },
     {
@@ -49,7 +50,7 @@ export class AppComponent implements OnInit {
   constructor(
     private menu: MenuController,
     private platform: Platform,
-    private router: Router,
+    private router: NavController,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private storage: Storage,
@@ -58,6 +59,7 @@ export class AppComponent implements OnInit {
     /* private oneSignal: OneSignal, */
   /*   private swUpdate: SwUpdate, */
     private toastCtrl: ToastController,
+    private utilities: UtilitiesService
   ) {
     this.initializeApp();
   }
@@ -124,18 +126,34 @@ export class AppComponent implements OnInit {
     });
   }
 
-  logout(data) {
+  async logout(data) {
 
     if( data === "Salir"){
 
       this.service.logOut().then(() => {
-        return this.router.navigateByUrl('/login');
+        return this.router.navigateRoot('/login');
       });
 
-    }else{
-      return
     }
-
+    if(data == 'Insides'){
+      await this.utilities.displayLoading();
+      this.service.checkInsight().then((data) => {
+        console.log(data['test'].test);
+        this.utilities.dismissLoading();
+        if(data['test'].test)
+        {
+        let navigationExtras: NavigationExtras = {
+          queryParams: {
+              data: data['test'].test
+          }
+        };
+          this.router.navigateRoot('/results', navigationExtras);
+      }
+        else{
+          return this.router.navigateRoot('/personality');;
+        }
+      });
+    }
   }
 
 
@@ -143,7 +161,7 @@ export class AppComponent implements OnInit {
   openTutorial() {
     this.menu.enable(false);
     this.storage.set('ion_did_tutorial', false);
-    this.router.navigateByUrl('/tutorial');
+    this.router.navigateRoot('/tutorial');
   }
 
   logIn(){

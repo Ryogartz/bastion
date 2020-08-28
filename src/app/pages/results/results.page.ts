@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { single } from './data';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras } from '@angular/router';
+import { NavController } from '@ionic/angular';
+import { UtilitiesService } from '../../providers/utilities/utilities.service';
+import { AuthService } from '../../providers/auth/auth.service';
 
 @Component({
   selector: 'app-results',
@@ -9,10 +12,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ResultsPage implements OnInit {
   user: any [];
-  data: any;
+  data: any = [];
   sumatoria: number;
 
-  constructor( private route: ActivatedRoute) {
+  constructor( private route: ActivatedRoute, private navCtrl: NavController, public utilities: UtilitiesService, private service: AuthService) {
    
     this.route.queryParams.subscribe(data => {
       this.data = JSON.parse(data['data']);
@@ -69,8 +72,36 @@ export class ResultsPage implements OnInit {
   onDeactivate(data): void {
     console.log("Deactivate", JSON.parse(JSON.stringify(data)));
   }
+
   show(){
     return 'asdas';
   }
+
+  goTo(url, data) {
+
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+            data: JSON.stringify(data)
+        }
+    };
+      this.navCtrl.navigateForward(url, navigationExtras);
+    }
+
+    async sendData(test){
+      console.log(test);
+      let data = {
+        test: test
+      }
+      console.log(data);
+      await this.utilities.displayLoading('Guardando prueba...');
+      this.service.addInsight(test).then((res: any) =>{
+        this.utilities.dismissLoading();
+      /*   console.log(res);
+        this.goTo('/results', res); */
+      },
+      (err)=>{
+        this.utilities.dismissLoading();
+      })
+    }
 }
 

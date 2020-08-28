@@ -41,15 +41,13 @@ export class ApiService {
     }
 
     post(endpoint: string, body: any, reqOpts ? : any) {
-        console.log(body);
-
         if (!reqOpts) {
             reqOpts = {};
         } else {
             reqOpts = {
                 headers: new HttpHeaders({
-                    'Accept':'application/json',
-                    // 'Content-Type':'application/json',
+                    //'Accept':'application/json',
+                    'Content-Type':'application/x-www-form-urlencoded',
                     'Authorization': "Bearer " + localStorage.getItem(CONSTANTES.LOCAL_STORAGE.token)
                 })
             };

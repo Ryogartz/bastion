@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from '../api/api.service';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { CONSTANTES } from '../constantes';
 @Injectable({
   providedIn: 'root'
 })
@@ -69,6 +70,42 @@ export class AuthService {
         console.log(res);
       }, err => {
         reject(err);
+      });
+    })
+  }
+
+  public checkInsight() {
+    return new Promise((resolve, reject) => {
+      const seq = this.api.post('api/auth/show-test', null, true);
+      seq.subscribe((res: any) => {
+        resolve(res);
+        console.log(res);
+      }, err => {
+        reject(err);
+      });
+    })
+  }
+
+  public addInsight(test) {
+    return new Promise((resolve, reject) => {
+      let reqOpts = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': "Bearer " + localStorage.getItem(CONSTANTES.LOCAL_STORAGE.token)
+        })
+    };
+    const body = new HttpParams()
+    .set('test', JSON.stringify(test))
+    console.log(body);
+    console.log(test);
+    
+      let observer:Observable<any> = this.http.post('https://valdusoft.com/bastian/api/auth/test', body.toString(), reqOpts);
+      observer.subscribe((res: any) => {
+        resolve(res);
+        console.log(res);
+      }, err => {
+        reject(err);
+        console.log(err);
       });
     })
   }
