@@ -36,7 +36,7 @@ export class ResultsPage implements OnInit {
     this.single[3].value = this.data['Sociabilidad'].N*100;
     this.single[4].value = this.data['Responsabilidad'].N*100; 
     console.log(single);
-
+      this.sendData(this.data);
   })
    }
    calculo(c, b){
@@ -93,7 +93,7 @@ export class ResultsPage implements OnInit {
         test: test
       }
       console.log(data);
-      await this.utilities.displayLoading('Guardando prueba...');
+      await this.utilities.displayLoading();
       this.service.addInsight(test).then((res: any) =>{
         this.utilities.dismissLoading();
       /*   console.log(res);

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 /* import { SwUpdate } from '@angular/service-worker';
  */
-import { MenuController, Platform, ToastController, NavController } from '@ionic/angular';
+import { MenuController, Platform, ToastController, NavController, ModalController } from '@ionic/angular';
 
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -13,6 +13,7 @@ import { UserData } from './providers/user-data';
 import { AuthService } from './providers/auth/auth.service';
 import { CONSTANTES } from './providers/constantes';
 import { UtilitiesService } from './providers/utilities/utilities.service';
+import { SplashPage } from './splash/splash.page';
 
 /* import { OneSignal } from '@ionic-native/onesignal/ngx'; */
 @Component({
@@ -46,6 +47,7 @@ export class AppComponent implements OnInit {
   ];
   loggedIn = false;
   dark = false;
+  data: any = [];
 
   constructor(
     private menu: MenuController,
@@ -59,7 +61,8 @@ export class AppComponent implements OnInit {
     /* private oneSignal: OneSignal, */
   /*   private swUpdate: SwUpdate, */
     private toastCtrl: ToastController,
-    private utilities: UtilitiesService
+    private utilities: UtilitiesService,
+    private modalCtrl: ModalController
   ) {
     this.initializeApp();
   }
@@ -90,9 +93,13 @@ export class AppComponent implements OnInit {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
+    this.platform.ready().then(async () => {
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      let splash = await this.modalCtrl.create({
+        component: SplashPage
+      });
+            splash.present();
+      //this.splashScreen.hide();
     /*   this.oneSignal.startInit("5c96e755-64ea-4b9f-834d-21973c70d45e", "65764984501")
       .inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification)
       .endInit(); */
@@ -135,12 +142,13 @@ export class AppComponent implements OnInit {
       });
 
     }
-    if(data == 'Insides'){
+    if(data == 'Insight'){
       await this.utilities.displayLoading();
       this.service.checkInsight().then((data) => {
-        console.log(data['test'].test);
+        this.data = data['test'];
+        console.log( this.data);
         this.utilities.dismissLoading();
-        if(data['test'].test)
+        if(this.data)
         {
         let navigationExtras: NavigationExtras = {
           queryParams: {

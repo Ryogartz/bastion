@@ -46,8 +46,8 @@ export class ApiService {
         } else {
             reqOpts = {
                 headers: new HttpHeaders({
-                    //'Accept':'application/json',
-                    'Content-Type':'application/x-www-form-urlencoded',
+                    'Accept':'application/json',
+                    /* 'Content-Type':'application/x-www-form-urlencoded', */
                     'Authorization': "Bearer " + localStorage.getItem(CONSTANTES.LOCAL_STORAGE.token)
                 })
             };
