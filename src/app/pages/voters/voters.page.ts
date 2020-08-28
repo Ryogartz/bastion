@@ -197,22 +197,28 @@ export class VotersPage implements OnInit {
   }
 
   async add(){
+    await this.utilities.displayLoading();
     // Iniciamos la consulta
     await this.auth.addrefere(this.formGroup.value).then( (res)=>{
+      this.utilities.dismissLoading();
       this.utilities.displayToast('Votante registrado exitosamente')
       this.navCtrl.pop();
     },(err)=>{
+      this.utilities.dismissLoading();
       //En caso de error
       this.utilities.displayToastButtonTime(err.error.message ? err.error.message : CONSTANTES.MESSAGES.error);
       console.log("getError", err );
     })
   }
   async edit(){
+    await this.utilities.displayLoading();
     // Iniciamos la consulta
     await this.auth.editUser(this.formGroup.value).then( (res)=>{
+      this.utilities.dismissLoading();
       this.utilities.displayToast('Votante modificado exitosamente')
       this.navCtrl.pop();
     },(err)=>{
+      this.utilities.dismissLoading();
       //En caso de error
       this.utilities.displayToastButtonTime(err.error.message ? err.error.message : CONSTANTES.MESSAGES.error);
       console.log("getError", err );
