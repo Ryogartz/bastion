@@ -18,13 +18,13 @@ export class PersonalityPage implements OnInit {
     private service: AuthService,
     private utilities: UtilitiesService) {
     this.formGroup = this.fb.group({
-      Nombre: ['asdasd', Validators.compose([Validators.required])],
-      Edad: ['15', Validators.compose([Validators.required])],
-      p1: ['un día en el que pueda resolver mis pendiente de forma tranquila y que al llegar el final del día pueda relajarme con mi familia, un día en el que pueda resolver mis pendiente de forma tranquila y que al llegar el final del día pueda relajarme con mi familia', Validators.compose([Validators.required, Validators.minLength(100)])],
-      p2: ['un día en el que pueda resolver mis pendiente de forma tranquila y que al llegar el final del día pueda relajarme con mi familia, un día en el que pueda resolver mis pendiente de forma tranquila y que al llegar el final del día pueda relajarme con mi familia', Validators.compose([Validators.required, Validators.minLength(100)])],
-      p3: ['un día en el que pueda resolver mis pendiente de forma tranquila y que al llegar el final del día pueda relajarme con mi familia, un día en el que pueda resolver mis pendiente de forma tranquila y que al llegar el final del día pueda relajarme con mi familia', Validators.compose([Validators.required, Validators.minLength(100)])],
-      p4: ['un día en el que pueda resolver mis pendiente de forma tranquila y que al llegar el final del día pueda relajarme con mi familia, un día en el que pueda resolver mis pendiente de forma tranquila y que al llegar el final del día pueda relajarme con mi familia', Validators.compose([Validators.required, Validators.minLength(100)])],
-      p5: ['un día en el que pueda resolver mis pendiente de forma tranquila y que al llegar el final del día pueda relajarme con mi familia, un día en el que pueda resolver mis pendiente de forma tranquila y que al llegar el final del día pueda relajarme con mi familia', Validators.compose([Validators.required, Validators.minLength(100)])],
+      Nombre: ['', Validators.compose([Validators.required])],
+      Edad: ['', Validators.compose([Validators.required])],
+      p1: ['', Validators.compose([Validators.required, Validators.minLength(100)])],
+      p2: ['', Validators.compose([Validators.required, Validators.minLength(100)])],
+      p3: ['', Validators.compose([Validators.required, Validators.minLength(100)])],
+      p4: ['', Validators.compose([Validators.required, Validators.minLength(100)])],
+      p5: ['', Validators.compose([Validators.required, Validators.minLength(100)])],
     });
    }
   step = 1;
