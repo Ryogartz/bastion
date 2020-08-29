@@ -30,6 +30,9 @@ export class DasboardPage implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user'));
     this.getMyrefered();
   }
+  ionViewDidEnter(){
+    this.getMyrefered();
+  }
 
   goTo(url) {
     let navigationExtras: NavigationExtras = {
