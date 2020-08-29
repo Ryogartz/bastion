@@ -87,7 +87,7 @@ export class PagesModalEditPage implements OnInit {
             data: JSON.stringify(this.item)
         }
     };
-      this.navctrl.navigateForward('/voters', navigationExtras);
+      this.navctrl.navigateRoot('/voters', navigationExtras);
    
   }
 
