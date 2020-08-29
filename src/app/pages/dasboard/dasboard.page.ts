@@ -68,12 +68,16 @@ export class DasboardPage implements OnInit {
 
   async getMyrefered(){
     // Iniciamos la consulta
-    await this.auth.myrefered().then( (res)=>{
+    await this.utilities.displayLoading('Por favor espere...');
+     this.auth.myrefered().then( (res)=>{
       console.log(res);
       this.refereds = res['users'];
       this.searchResult = this.refereds;
+       this.utilities.dismissLoading();
     },(err)=>{
       //En caso de error
+      this.utilities.dismissLoading();
+
       this.utilities.displayToastButtonTime(err.error.message ? err.error.message : CONSTANTES.MESSAGES.error);
       console.log("getError", err );
     })
