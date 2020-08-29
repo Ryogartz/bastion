@@ -93,8 +93,9 @@ export class VotersPage implements OnInit {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-
-      this.imgSelected = this.webView.convertFileSrc(imageData);
+      this.imgSelected = null
+      this.imgSelected = 'data:image/jpeg;base64,' + imageData;
+      // this.imgSelected = this.webView.convertFileSrc(imageData);
       this.formGroup.controls.photo.setValue(imageData);
      }, (err) => {
       // Handle error

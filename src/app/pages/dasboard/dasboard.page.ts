@@ -26,9 +26,13 @@ export class DasboardPage implements OnInit {
 
   constructor( private navCtrl: NavController,public modalController: ModalController,  public auth: AuthService, private utilities: UtilitiesService) { }
 
-  ngOnInit() {
+   ionViewDidEnter(){
     this.user = JSON.parse(localStorage.getItem('user'));
     this.getMyrefered();
+  }
+
+  ngOnInit() {
+
   }
 
   goTo(url) {

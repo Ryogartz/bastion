@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth/auth.service';
 import { UtilitiesService } from '../../providers/utilities/utilities.service';
@@ -16,6 +16,7 @@ export class PersonalityPage implements OnInit {
   constructor(private navCtrl: NavController,
     private fb: FormBuilder,
     private service: AuthService,
+    public alertController: AlertController,
     private utilities: UtilitiesService) {
     this.formGroup = this.fb.group({
       Nombre: ['', Validators.compose([Validators.required])],
@@ -55,12 +56,27 @@ export class PersonalityPage implements OnInit {
 
     this.service.personality(this.formGroup).then((res: any) =>{
       this.utilities.dismissLoading();
-      console.log(res);
-      this.goTo('/results', res);
+        if(res === null){
+          this.presentAlert()
+          this.goTo('/dashboard', null);
+        }else{
+          console.log("resultado",res);
+          this.goTo('/results', res);
+        }
     },
     (err)=>{
       this.utilities.dismissLoading();
     })
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Alerta',
+      message: 'Complete los campos de forma correcta.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 }

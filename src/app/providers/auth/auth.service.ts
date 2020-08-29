@@ -167,7 +167,7 @@ export class AuthService {
       let observer:Observable<any> = this.http.post('https://personality-insights-bastian.herokuapp.com/upload', body.toString(), reqOpts);
       observer.subscribe((res: any) => {
         resolve(res);
-        console.log(res);
+        console.log("respuesta de la peticion",res);
       }, err => {
         reject(err);
         console.log(err);
